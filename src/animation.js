@@ -1,7 +1,32 @@
+
+const essValue = document.getElementById('ess-value');
+const profValue = document.getElementById('prof-value');
+function togglePricing(option) {
+    const slider = document.getElementById('offer');
+
+    if (option === 'monthly') {
+        slider.style.left = '0'; // Slide to the left
+        essValue.innerHTML = "  $125<span class='text-base font-light text-black'>/month</span>";
+        profValue.innerHTML = "  $300<span class='text-base font-light text-black'>/month</span>";
+    } else if (option === 'yearly') {
+        slider.style.left = '50%'; // Slide to the right
+        essValue.innerHTML = "  $100<span class='text-base font-light text-black'>/month</span>";
+        profValue.innerHTML = "  $240<span class='text-base font-light text-black'>/month</span>";
+    }
+}
+
+document.getElementById("FAQcontainer").addEventListener('click' ,function(e){
+    const faqBlock = e.target.closest(".eachFAQ");
+
+    if (faqBlock) {
+        const answer = faqBlock.querySelector(".answer"); // Find the answer within the clicked FAQ
+        // const icon = faqBlock.querySelector(".fa-solid"); // Find the icon
+        answer.classList.toggle("hidden"); // Toggle the visibility
+        // icon.classList.toggle("rotate-180"); // Optional: Rotate the icon
+      }
+})
+
 const tl = gsap.timeline()
-
-
-
 tl.to(".slider #line1", {
     x: 0,
     yoyo: true,
@@ -94,7 +119,7 @@ tl.to("#slidingText", {
     scrollTrigger: {
         trigger: '#slidingText',
         scroller: 'body', // Default scroller
-        markers: true, // For debugging, can be removed later
+        markers: false, // For debugging, can be removed later
         start: "top 101%", // Adjust based on when you want the animation to start
         end: "top -20%", // Optional, for smoother control
         scrub: true // Smooth animation based on scroll

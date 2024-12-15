@@ -1,5 +1,4 @@
 const responsiveNav = document.getElementById("responsiveNav");
-console.log(responsiveNav);
 
 
 
